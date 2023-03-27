@@ -4,8 +4,8 @@ import helmet from 'helmet';
 import cors from 'cors';
 import {ApolloServer} from '@apollo/server';
 import {expressMiddleware} from '@apollo/server/express4';
-import typeDefs from './api/schemas/index';
-import resolvers from './api/resolvers/index';
+import typeDefs from './api/schemas';
+import resolvers from './api/resolvers';
 import {
   ApolloServerPluginLandingPageLocalDefault,
   ApolloServerPluginLandingPageProductionDefault,
