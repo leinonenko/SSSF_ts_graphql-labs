@@ -1,4 +1,8 @@
 import {Animal} from '../../interfaces/Animal';
+import animalModel from '../models/animalModel';
+import speciesModel from '../models/speciesModel';
+import categoryModel from '../models/categoryModel';
+
 const animalData = [
   {
     id: '1',
@@ -24,19 +28,8 @@ const categoryData = [
 
 export default {
   Query: {
-    animals: (_parent: undefined, _args: Animal) => {
-      return animalData;
-    },
-  },
-  Animal: {
-    species: (parent: any) => {
-      console.log(parent);
-      return speciesData.find((species) => species.id === parent.species);
-    },
-  },
-  Species: {
-    category: (parent: any) => {
-      return categoryData.find((category) => category.id === parent.category);
+    animals: async (_parent: undefined, _args: Animal) => {
+      return await animalModel.find();
     },
   },
 };
