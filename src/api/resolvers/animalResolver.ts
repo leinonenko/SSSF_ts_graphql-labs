@@ -6,6 +6,9 @@ export default {
     animals: async () => {
       return await animalModel.find();
     },
+    animalById: async (_parent: undefined, args: Animal) => {
+      return await animalModel.findById(args.id);
+    },
   },
   Mutation: {
     addAnimal: async (_parent: undefined, args: Animal) => {

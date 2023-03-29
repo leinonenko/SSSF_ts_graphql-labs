@@ -9,19 +9,29 @@ export default {
       return await categoryModel.findById(parent.category);
     },
   },
-  Mutation: {
-    addCategory: async (_parent: undefined, args: Category) => {
-      console.log(args);
-      const category = new categoryModel(args);
-      return await category.save();
+
+  Query: {
+    categories: async () => {
+      return await categoryModel.find();
     },
-    modifyCategory: async (_parent: undefined, args: Category) => {
-      const category = await categoryModel.findByIdAndUpdate(args.id, args, {
-        new: true,
-      });
+    categoryById: async (_parent: undefined, args: Category) => {
+      return await categoryModel.findById(args.id);
     },
-    deleteCategory: async (_parent: undefined, args: Category) => {
-      return await categoryModel.findByIdAndDelete(args.id);
+
+    Mutation: {
+      addCategory: async (_parent: undefined, args: Category) => {
+        console.log(args);
+        const category = new categoryModel(args);
+        return await category.save();
+      },
+      modifyCategory: async (_parent: undefined, args: Category) => {
+        const category = await categoryModel.findByIdAndUpdate(args.id, args, {
+          new: true,
+        });
+      },
+      deleteCategory: async (_parent: undefined, args: Category) => {
+        return await categoryModel.findByIdAndDelete(args.id);
+      },
     },
   },
 };

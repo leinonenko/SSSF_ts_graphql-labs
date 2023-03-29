@@ -8,6 +8,7 @@ type Animal {
 
 type Query {
   animals: [Animal]
+  animalById(id: ID!): Animal
 }
 
 type Mutation {
