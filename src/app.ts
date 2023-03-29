@@ -6,6 +6,7 @@ import {ApolloServer} from '@apollo/server';
 import {expressMiddleware} from '@apollo/server/express4';
 import typeDefs from './api/schemas';
 import resolvers from './api/resolvers';
+import api from './api';
 import {
   ApolloServerPluginLandingPageLocalDefault,
   ApolloServerPluginLandingPageProductionDefault,
@@ -13,6 +14,8 @@ import {
 import {notFound, errorHandler} from './middlewares';
 
 const app = express();
+
+app.use('/api/v1', api);
 
 (async () => {
   try {

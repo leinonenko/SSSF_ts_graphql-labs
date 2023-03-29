@@ -4,6 +4,7 @@ type Animal {
   id: ID!
   animal_name: String!
   species: Species!
+  image: String
 }
 
 type Query {
