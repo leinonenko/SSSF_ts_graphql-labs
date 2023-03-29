@@ -1,35 +1,22 @@
 import {Animal} from '../../interfaces/Animal';
 import animalModel from '../models/animalModel';
-import speciesModel from '../models/speciesModel';
-import categoryModel from '../models/categoryModel';
-
-const animalData = [
-  {
-    id: '1',
-    animal_name: 'Frank',
-    species: '1',
-  },
-];
-
-const speciesData = [
-  {
-    id: '1',
-    species_name: 'Cat',
-    category: '1',
-  },
-];
-
-const categoryData = [
-  {
-    id: '1',
-    category_name: 'Mammal',
-  },
-];
 
 export default {
   Query: {
-    animals: async (_parent: undefined, _args: Animal) => {
+    animals: async () => {
       return await animalModel.find();
+    },
+  },
+  Mutation: {
+    addAnimal: async (_parent: undefined, args: Animal) => {
+      const animal = new animalModel(args);
+      return await animal.save();
+    },
+    modifyAnimal: async (_parent: undefined, args: Animal) => {
+      console.log(args);
+      return await animalModel.findByIdAndUpdate(args.id, args, {
+        new: true,
+      });
     },
   },
 };

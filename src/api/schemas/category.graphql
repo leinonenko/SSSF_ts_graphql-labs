@@ -4,5 +4,5 @@ type Category {
 }
 
 type Mutation {
-  addCategory(categoryName: String): Category
+  addCategory(category_name: String!): Category
 }
