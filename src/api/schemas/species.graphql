@@ -26,4 +26,13 @@ type Mutation {
     category: ID!
     location: InputPoint!
   ): Species
+
+  modifySpecies(
+    id: ID!
+    species_name: String
+    category: ID
+    location: InputPoint
+  ): Species
+
+  deleteSpecies(id: ID!): Species
 }

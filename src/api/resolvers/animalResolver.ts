@@ -18,5 +18,8 @@ export default {
         new: true,
       });
     },
+    deleteAnimal: async (_parent: undefined, args: Animal) => {
+      return await animalModel.findByIdAndDelete(args.id);
+    },
   },
 };
